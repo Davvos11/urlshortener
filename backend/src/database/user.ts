@@ -23,7 +23,7 @@ export class User {
         // Generate hash, salt and number of iterations
         const {hash: hashedPassword, salt, iterations} = generateHash(password)
         // Create and return object
-        return await this.create({username: name, password: hashedPassword, hashIterations: iterations, salt} as User)
+        return this.create({username: name, password: hashedPassword, hashIterations: iterations, salt} as User)
     }
 
     public checkPassword(this: DocumentType<User>, password: string) {
