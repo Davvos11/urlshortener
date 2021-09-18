@@ -1,6 +1,6 @@
 import app, {sessionChecker} from "./express.js"
 import * as db from "./database/database.js"
-import {login, signup} from "./authentication.js";
+import {login, loginCheck, signup} from "./authentication.js";
 import {add, redirect} from "./url.js";
 
 const PORT = 8000
@@ -11,6 +11,7 @@ await db.connect()
 // Add endpoints
 app.post('/login', login)
 app.post('/signup', signup)
+app.get('/login-check', loginCheck)
 app.post('/add', sessionChecker, add)
 app.all('*', redirect)
 

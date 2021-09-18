@@ -54,3 +54,11 @@ export async function signup(req: express.Request, res: express.Response) {
     }
 
 }
+
+export async function loginCheck(req: express.Request, res: express.Response) {
+    if (req.session.username) {
+        return res.send(true)
+    } else {
+        return res.send(false)
+    }
+}

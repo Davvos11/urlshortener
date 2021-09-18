@@ -18,7 +18,7 @@ export async function add(req: express.Request, res: express.Response) {
     try {
         // Create a new redirect
         await URLModel.add(path, value, user)
-        return res.status(204).send()
+        return res.status(200).send(`Added ${req.baseUrl}/${path}`)
     } catch (e) {
         // Error 11000 means a duplicate key, i.e. path already taken
         if (e instanceof mongo.MongoError && e.code === 11000) {
